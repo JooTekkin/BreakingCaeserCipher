@@ -19,9 +19,11 @@ public class WordLengths {
         for(String words : resource.words()){
             boolean firstChar = Character.isLetter(words.charAt(0));
             boolean lastChar = Character.isLetter(words.charAt(words.length()-1));
-            if((firstChar && !lastChar) || (!firstChar && lastChar) ){
+            if((firstChar && !lastChar) || (!firstChar && lastChar)){
                 counts[words.length()-1]++;
-            } else {
+            } else if (!firstChar) {
+                counts[words.length()-2]++;
+            }else{
                 counts[words.length()]++;
             }
         }
@@ -47,3 +49,12 @@ class WordLengthsMain {
         wl.testCountWordLengths();
     }
 }
+/*
+
+1 Words of length 1
+2 Words of length 2
+6 Words of length 3
+2 Words of length 4
+1 Words of length 5
+most Length = 6
+ */
